@@ -37,17 +37,23 @@ const Homepage = () => {
                     </p>
 
                     {/* Start Quiz Button with hover effects */}
-                    <button onClick={handleStartQuiz}
+                    <button
+                        onClick={handleStartQuiz}
                         className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full 
-                         text-white text-xl font-bold transform transition-all duration-300 
-                         hover:scale-105 hover:shadow-xl hover:from-purple-600 hover:to-pink-600
-                         active:scale-95"
+              text-white text-xl font-bold transform transition-all duration-300 
+              hover:scale-110 hover:shadow-xl hover:from-purple-600 hover:to-pink-600
+              active:scale-95"
                     >
-                        <div className="flex items-center gap-2">
-                            <Play className="w-6 h-6" />
-                            Start Quiz
+                        <div className="flex items-center gap-2 transition-transform duration-300 group-hover:scale-110">
+                            <Play className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />
+                            <span className="transition-transform duration-300 group-hover:scale-110">
+                                Start Quiz
+                            </span>
                         </div>
-                        <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-30 group-hover:opacity-100 transition-all duration-300" />
+
+                        {/* Glowing effect with better visibility */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full 
+                    blur-lg opacity-40 group-hover:opacity-80 transition-all duration-300" />
                     </button>
 
                     {/* Stats or additional info */}
@@ -83,31 +89,42 @@ const Homepage = () => {
                             </button>
                         </div>
 
-                        {/* Modal Content */}
-                        <div className="space-y-4">
-                            <div className="bg-purple-50 p-4 rounded-lg">
-                                <h3 className="font-semibold text-purple-900 mb-2">Quiz Format</h3>
-                                <ul className="list-disc pl-4 text-purple-800 space-y-1">
-                                    <li>The quiz consists of multiple-choice questions</li>
-                                    <li>Each question has 4 possible answers</li>
-                                    <li>Only one answer is correct per question</li>
-                                </ul>
-                            </div>
+                        {/* Modal Content with Scrollbar */}
+                        <div className="max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                            <div className="space-y-4">
+                                <div className="bg-purple-50 p-4 rounded-lg">
+                                    <h3 className="font-semibold text-purple-900 mb-2">Quiz Format</h3>
+                                    <ul className="list-disc pl-4 text-purple-800 space-y-1">
+                                        <li>The quiz consists of multiple-choice questions</li>
+                                        <li>Each question has 4 possible answers</li>
+                                        <li>Only one answer is correct per question</li>
+                                    </ul>
+                                </div>
 
-                            <div className="bg-blue-50 p-4 rounded-lg">
-                                <h3 className="font-semibold text-blue-900 mb-2">Timing</h3>
-                                <ul className="list-disc pl-4 text-blue-800 space-y-1">
-                                    <li>You have 10 minutes to complete the Quiz</li>
-                                    <li>The timer starts when the questions start</li>
-                                </ul>
-                            </div>
+                                <div className="bg-blue-50 p-4 rounded-lg">
+                                    <h3 className="font-semibold text-blue-900 mb-2">Timing</h3>
+                                    <ul className="list-disc pl-4 text-blue-800 space-y-1">
+                                        <li>You have 10 minutes to complete the Quiz</li>
+                                        <li>The timer starts when the questions start</li>
+                                    </ul>
+                                </div>
 
-                            <div className="bg-pink-50 p-4 rounded-lg">
-                                <h3 className="font-semibold text-pink-900 mb-2">Scoring</h3>
-                                <ul className="list-disc pl-4 text-pink-800 space-y-1">
-                                    <li>Correct answers: 4 points</li>
-                                    <li>Incorrect answers: -1 points</li>
-                                </ul>
+                                <div className="bg-pink-50 p-4 rounded-lg">
+                                    <h3 className="font-semibold text-pink-900 mb-2">Scoring</h3>
+                                    <ul className="list-disc pl-4 text-pink-800 space-y-1">
+                                        <li>Correct answers: 4 points</li>
+                                        <li>Incorrect answers: -1 points</li>
+                                        <li>Streak of 3: 6 points</li>
+                                    </ul>
+                                </div>
+
+                                <div className="bg-green-50 p-4 rounded-lg">
+                                    <h3 className="font-semibold text-green-900 mb-2">Power-Ups</h3>
+                                    <ul className="list-disc pl-4 text-green-800 space-y-1">
+                                        <li>50-50: Eliminates 2 wrong options</li>
+                                        <li>Skip: Current question can be skipped</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -116,9 +133,9 @@ const Homepage = () => {
                             <button
                                 onClick={handleBeginQuiz}
                                 className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white 
-                                         rounded-lg font-semibold transform transition-all duration-200 
-                                         hover:from-purple-600 hover:to-pink-600 hover:scale-105 
-                                         active:scale-95"
+                             rounded-lg font-semibold transform transition-all duration-200 
+                             hover:from-purple-600 hover:to-pink-600 hover:scale-105 
+                             active:scale-95"
                             >
                                 Lets Begin!
                             </button>
@@ -129,5 +146,4 @@ const Homepage = () => {
         </>
     );
 };
-
 export default Homepage;
